@@ -1,0 +1,44 @@
+{
+  "name": "ts-import-map-generator",
+  "version": "0.0.0",
+  "description": "Creates import maps based from a typescript entry point file.",
+  "bin": "cli.js",
+  "exports": {
+    ".": {
+      "import": "./dist/api.prod.js",
+      "require": "./dist/api.prod.cjs",
+      "types": "./dist/api.d.ts"
+    }
+  },
+  "files": [
+    "dist/*.d.ts",
+    "dist/*.prod.js",
+    "dist/*.prod.mjs"
+  ],
+  "scripts": {
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "check-format": "prettier --ignore-path=.gitignore --check .",
+    "lint": "eslint --ignore-path=.gitignore .",
+    "prettier": "prettier --ignore-path=.gitignore --write .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolas377/ts-import-map-generator.git"
+  },
+  "author": "Nicolas Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicolas377/ts-import-map-generator/issues"
+  },
+  "homepage": "https://github.com/nicolas377/ts-import-map-generator#readme",
+  "devDependencies": {
+    "@rollup/plugin-json": "~5.0.0",
+    "@rollup/plugin-replace": "~5.0.0",
+    "@rollup/plugin-typescript": "~9.0.1",
+    "@types/node": "~18.8.5",
+    "rollup": "~3.1.0",
+    "tsconfig-paths": "~4.1.0",
+    "typescript": "~4.8.4"
+  }
+}
